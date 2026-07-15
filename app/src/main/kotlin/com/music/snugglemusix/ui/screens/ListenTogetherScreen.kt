@@ -678,12 +678,30 @@ private fun RoomStatusCard(
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = roomCode,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.displaySmall,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
-                letterSpacing = 1.sp,
+                letterSpacing = 4.sp,
                 textAlign = TextAlign.Center
             )
+            Spacer(modifier = Modifier.height(8.dp))
+            FilledTonalButton(
+                onClick = {
+                    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                    val clip = android.content.ClipData.newPlainText("Room Code", roomCode)
+                    clipboard.setPrimaryClip(clip)
+                    Toast.makeText(context, R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                },
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.content_copy),
+                    contentDescription = stringResource(R.string.copy_code),
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(stringResource(R.string.copy_code))
+            }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = if (isHost)
@@ -721,24 +739,6 @@ private fun RoomStatusCard(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(stringResource(R.string.copy_link))
-                    }
-
-                    FilledTonalButton(
-                        onClick = {
-                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-                            val clip = android.content.ClipData.newPlainText("Room Code", roomCode)
-                            clipboard.setPrimaryClip(clip)
-                            Toast.makeText(context, R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show()
-                        },
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.content_copy),
-                            contentDescription = stringResource(R.string.copy_code),
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(stringResource(R.string.copy_code))
                     }
                 }
             }

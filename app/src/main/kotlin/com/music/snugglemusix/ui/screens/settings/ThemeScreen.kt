@@ -105,6 +105,12 @@ val PaletteColors = listOf(
     ThemePalette(R.string.palette_brown, Color(0xFF6D4C41)),
     ThemePalette(R.string.palette_grey, Color(0xFF757575)),
     ThemePalette(R.string.palette_blue_grey, Color(0xFF546E7A)),
+    ThemePalette(R.string.palette_pink, Color(0xFFE91E63)),
+    ThemePalette(R.string.palette_deep_pink, Color(0xFFC2185B)),
+    ThemePalette(R.string.palette_lavender, Color(0xFFB39DDB)),
+    ThemePalette(R.string.palette_mint, Color(0xFF80CBC4)),
+    ThemePalette(R.string.palette_peach, Color(0xFFFFCCBC)),
+    ThemePalette(R.string.palette_midnight, Color(0xFF283593)),
 )
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)

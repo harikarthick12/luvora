@@ -160,8 +160,13 @@ fun SearchScreen(
     var isFirstLaunch by rememberSaveable { mutableStateOf(true) }
     
     var selectedTabIndex by rememberSaveable { mutableStateOf(0) }
-    var searchActive by rememberSaveable { mutableStateOf(false) }
+    var searchActive by rememberSaveable { mutableStateOf(true) }
     var showSearchContent by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+        keyboardController?.show()
+    }
 
     LaunchedEffect(searchActive) {
         if (searchActive) {
@@ -364,6 +369,7 @@ fun SearchScreen(
                         .fillMaxWidth()
                         .padding(horizontal = searchBarHorizontalPadding)
                         .padding(top = searchBarTopPadding)
+                        .focusRequester(focusRequester)
                 ) {
                     if (showSearchContent) {
                         when (searchSource) {

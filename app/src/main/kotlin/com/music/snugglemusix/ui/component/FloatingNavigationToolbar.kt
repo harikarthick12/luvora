@@ -112,6 +112,7 @@ fun FloatingNavigationToolbar(
         if (hasOverflowMenu) {
             HorizontalFloatingToolbar(
                 expanded = true,
+                shape = androidx.compose.ui.graphics.RectangleShape,
                 floatingActionButton = {
                     FloatingToolbarOverflowMenuButton(
                         pureBlack = pureBlack,
@@ -123,7 +124,7 @@ fun FloatingNavigationToolbar(
                         settingsContentDescription = settingsContentDescription,
                     )
                 },
-                modifier = Modifier.widthIn(max = 480.dp),
+                modifier = Modifier.fillMaxWidth(),
                 colors = toolbarColors,
                 scrollBehavior = scrollBehavior,
                 animationSpec = FloatingToolbarDefaults.animationSpec(),
@@ -141,6 +142,7 @@ fun FloatingNavigationToolbar(
         } else if (hasFabAction) {
             HorizontalFloatingToolbar(
                 expanded = true,
+                shape = androidx.compose.ui.graphics.RectangleShape,
                 floatingActionButton = {
                     FloatingToolbarFabAction(
                         pureBlack = pureBlack,
@@ -149,7 +151,7 @@ fun FloatingNavigationToolbar(
                         contentDescription = fabContentDescription,
                     )
                 },
-                modifier = Modifier.widthIn(max = 480.dp),
+                modifier = Modifier.fillMaxWidth(),
                 colors = toolbarColors,
                 scrollBehavior = scrollBehavior,
                 animationSpec = FloatingToolbarDefaults.animationSpec(),
@@ -167,7 +169,8 @@ fun FloatingNavigationToolbar(
         } else {
             HorizontalFloatingToolbar(
                 expanded = true,
-                modifier = Modifier.widthIn(max = 420.dp),
+                shape = androidx.compose.ui.graphics.RectangleShape,
+                modifier = Modifier.fillMaxWidth(),
                 colors = toolbarColors,
                 scrollBehavior = scrollBehavior,
             ) {

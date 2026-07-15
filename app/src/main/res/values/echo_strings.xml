@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="explore">Explore</string>
   <string name="tab_explore">Explore</string>
@@ -707,6 +707,12 @@
   <string name="palette_brown">Brown</string>
   <string name="palette_grey">Grey</string>
   <string name="palette_blue_grey">Blue Grey</string>
+  <string name="palette_pink">Pink</string>
+  <string name="palette_deep_pink">Deep Pink</string>
+  <string name="palette_lavender">Lavender</string>
+  <string name="palette_mint">Mint</string>
+  <string name="palette_peach">Peach</string>
+  <string name="palette_midnight">Midnight</string>
   <!-- Theme Content Descriptions -->
   <string name="cd_back">Back</string>
   <string name="cd_pure_black_mode">Pure Black mode</string>

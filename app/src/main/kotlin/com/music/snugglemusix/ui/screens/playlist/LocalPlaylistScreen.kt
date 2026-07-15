@@ -709,8 +709,7 @@ fun LocalPlaylistScreen(
                                     }
                                 }
                             },
-                            modifier =
-                            Modifier
+                            modifier = Modifier
                                 .fillMaxWidth()
                                 .combinedClickable(
                                     onClick = {
@@ -722,8 +721,8 @@ fun LocalPlaylistScreen(
                                             playerConnection.playQueue(
                                                 ListQueue(
                                                     title = playlist!!.playlist.name,
-                                                    items = songs.map { it.song.toMediaItem() },
-                                                    startIndex = songs.indexOfFirst { it.map.id == song.map.id },
+                                                    items = (if (isSearching) filteredSongs else songs).map { it.song.toMediaItem() },
+                                                    startIndex = (if (isSearching) filteredSongs else songs).indexOfFirst { it.map.id == song.map.id },
                                                 ),
                                             )
                                         }

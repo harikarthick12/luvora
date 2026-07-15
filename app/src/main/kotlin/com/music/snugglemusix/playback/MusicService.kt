@@ -1543,10 +1543,6 @@ class MusicService :
         }
 
         player.addMediaItems(items)
-        if (player.shuffleModeEnabled) {
-            val shufflePlaylistFirst = dataStore.get(ShufflePlaylistFirstKey, false)
-            applyShuffleOrder(player.currentMediaItemIndex, player.mediaItemCount, shufflePlaylistFirst)
-        }
         player.prepare()
     }
 
@@ -1720,11 +1716,13 @@ class MusicService :
     }
 
     private var previousMediaItemIndex = C.INDEX_UNSET
+    private var playNextInsertOffset = 1
 
     override fun onMediaItemTransition(
         mediaItem: MediaItem?,
         reason: Int,
     ) {
+        playNextInsertOffset = 1
         
         if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_AUTO) {
             val repeatMode = runBlocking { dataStore.get(RepeatModeKey, REPEAT_MODE_OFF) }
