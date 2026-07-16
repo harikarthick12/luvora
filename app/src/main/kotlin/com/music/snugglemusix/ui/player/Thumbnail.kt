@@ -526,8 +526,9 @@ private fun ThumbnailHeader(
         ) {
             
             if (listenTogetherRoleState?.value != RoomRole.NONE) {
+                val roomCode = listenTogetherManager?.roomState?.collectAsState()?.value?.roomCode
                 Text(
-                    text = if (listenTogetherRoleState?.value == RoomRole.HOST) "Hosting Listen Together" else "Listening Together",
+                    text = if (listenTogetherRoleState?.value == RoomRole.HOST) "Hosting Listen Together ${roomCode?.let { "• ID: $it" } ?: ""}" else "Listening Together ${roomCode?.let { "• ID: $it" } ?: ""}",
                     style = MaterialTheme.typography.titleMedium,
                     color = textColor
                 )

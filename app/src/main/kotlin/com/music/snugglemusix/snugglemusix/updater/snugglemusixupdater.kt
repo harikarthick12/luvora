@@ -336,7 +336,7 @@ fun UpdateScreen(navController: NavHostController) {
                                             }
                                         } else {
                                             val cleanVersion = currentStatus.version.removePrefix("v")
-                                            val urlToDownload = currentStatus.apkUrl ?: "https://github.com/harikarthick12/Luvora/releases/download/${currentStatus.version}/SnuggleMusix-${cleanVersion}-Universal.apk"
+                                            val urlToDownload = currentStatus.apkUrl ?: "https://github.com/harikarthick12/Luvora/releases/download/${currentStatus.version}/Luvora-${cleanVersion}-Universal.apk"
                                             
                                             val constraints = Constraints.Builder()
                                                 .setRequiredNetworkType(NetworkType.CONNECTED)

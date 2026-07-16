@@ -33,8 +33,8 @@ android {
         applicationId = "com.snuggle.music"
         minSdk = 26
         targetSdk = 36
-        versionCode = 529
-        versionName = "5.26.3"
+        versionCode = 531
+        versionName = "5.26.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

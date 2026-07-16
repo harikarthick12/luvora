@@ -1192,6 +1192,7 @@ class MusicService :
 
         currentQueue = queue
         queueTitle = null
+        clearAutomix()
         val persistShuffleAcrossQueues = dataStore.get(PersistentShuffleAcrossQueuesKey, false)
         val previousShuffleEnabled = player.shuffleModeEnabled
         if (!persistShuffleAcrossQueues) {
@@ -1464,6 +1465,7 @@ class MusicService :
         }
 
         val insertIndex = player.currentMediaItemIndex + 1
+        playNextInsertOffset += items.size
         val shuffleEnabled = player.shuffleModeEnabled
 
         
@@ -1542,7 +1544,9 @@ class MusicService :
             }
         }
 
-        player.addMediaItems(items)
+        val insertIndex = (player.currentMediaItemIndex + playNextInsertOffset).coerceAtMost(player.mediaItemCount)
+        playNextInsertOffset += items.size
+        player.addMediaItems(insertIndex, items)
         player.prepare()
     }
 

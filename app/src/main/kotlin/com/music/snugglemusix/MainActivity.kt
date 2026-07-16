@@ -1,4 +1,4 @@
-﻿
+
 
 package com.snuggle.music
 import com.snuggle.music.R
@@ -1008,7 +1008,6 @@ class MainActivity : ComponentActivity() {
                                                     end = FloatingToolbarHorizontalPadding,
                                                     bottom = bottomInset + FloatingToolbarBottomPadding,
                                                 )
-                                                .height(NavigationBarHeight)
                                         )
                                     }
 

@@ -78,7 +78,7 @@ class YouTubeQueue(
         
         fun radio(song: MediaMetadata): YouTubeQueue {
             return YouTubeQueue(
-                WatchEndpoint(videoId = song.id),
+                WatchEndpoint(videoId = song.id, playlistId = "RDAMVM${song.id}"),
                 song
             )
         }

@@ -164,6 +164,7 @@ fun SearchScreen(
     var showSearchContent by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
+        kotlinx.coroutines.delay(100)
         focusRequester.requestFocus()
         keyboardController?.show()
     }

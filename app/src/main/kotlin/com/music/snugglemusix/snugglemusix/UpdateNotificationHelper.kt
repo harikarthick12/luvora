@@ -34,7 +34,7 @@ object UpdateNotificationHelper {
         val apkUrl = if (versionName.contains("nightly", ignoreCase = true)) {
             "https://nightly.link/harikarthick12/workflows/nightly.yml/main/echomusic-gms-nightly.zip"
         } else {
-            "https://github.com/harikarthick12/Luvora/releases/download/$versionName/SnuggleMusix-${versionName.removePrefix("v")}-Universal.apk"
+            "https://github.com/harikarthick12/Luvora/releases/download/$versionName/Luvora-${versionName.removePrefix("v")}-Universal.apk"
         }
         val intent = Intent(Intent.ACTION_VIEW, apkUrl.toUri())
 

@@ -37,6 +37,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -233,14 +234,23 @@ private fun ToolbarItemsContainer(
                         .width(slidingPillWidth)
                         .fillMaxHeight()
                         .background(
-                            color = floatingToolbarSelectedItemContainerColor(pureBlack),
+                            brush = androidx.compose.ui.graphics.Brush.horizontalGradient(
+                                colors = listOf(
+                                    MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
+                                    MaterialTheme.colorScheme.tertiary.copy(alpha = 0.3f)
+                                )
+                            ),
                             shape = RoundedCornerShape(24.dp)
                         )
                 )
             }
         }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
             items.forEach { screen ->
                 if (screen == Screens.Library && onMusicRecognitionClick != null) {
                     FloatingNavigationToolbarActionItem(
