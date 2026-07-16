@@ -38,6 +38,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -125,7 +126,7 @@ fun FloatingNavigationToolbar(
                         settingsContentDescription = settingsContentDescription,
                     )
                 },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().wrapContentSize(),
                 colors = toolbarColors,
                 scrollBehavior = scrollBehavior,
                 animationSpec = FloatingToolbarDefaults.animationSpec(),
@@ -152,7 +153,7 @@ fun FloatingNavigationToolbar(
                         contentDescription = fabContentDescription,
                     )
                 },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().wrapContentSize(),
                 colors = toolbarColors,
                 scrollBehavior = scrollBehavior,
                 animationSpec = FloatingToolbarDefaults.animationSpec(),
@@ -171,7 +172,7 @@ fun FloatingNavigationToolbar(
             HorizontalFloatingToolbar(
                 expanded = true,
                 shape = androidx.compose.ui.graphics.RectangleShape,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().wrapContentSize(),
                 colors = toolbarColors,
                 scrollBehavior = scrollBehavior,
             ) {
@@ -459,7 +460,7 @@ private fun FloatingNavigationToolbarItem(
                 role = Role.Tab,
                 onClick = onClick,
             )
-            .widthIn(min = 48.dp)
+            .widthIn(min = 64.dp)
             .padding(horizontal = horizontalPadding, vertical = 12.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,

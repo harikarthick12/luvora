@@ -55,6 +55,7 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -883,11 +884,34 @@ class MainActivity : ComponentActivity() {
                                                 )
                                             }
                                             if (listenTogetherInTopBar) {
-                                                IconButton(onClick = { navController.navigate("listen_together_from_topbar") }) {
-                                                    Icon(
-                                                        painter = painterResource(R.drawable.group_outlined),
-                                                        contentDescription = stringResource(R.string.together)
-                                                    )
+                                                val roomState by listenTogetherManager.roomState.collectAsState()
+                                                val connectionState by listenTogetherManager.connectionState.collectAsState()
+                                                
+                                                if (connectionState == com.snuggle.music.listentogether.ConnectionState.CONNECTED && roomState != null) {
+                                                    androidx.compose.material3.TextButton(
+                                                        onClick = { navController.navigate("listen_together_from_topbar") },
+                                                        contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 8.dp)
+                                                    ) {
+                                                        Icon(
+                                                            painter = painterResource(R.drawable.group_outlined),
+                                                            contentDescription = stringResource(R.string.together),
+                                                            modifier = Modifier.size(18.dp),
+                                                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                                        )
+                                                        androidx.compose.foundation.layout.Spacer(Modifier.width(6.dp))
+                                                        Text(
+                                                            text = roomState!!.roomCode,
+                                                            fontWeight = FontWeight.Bold,
+                                                            color = MaterialTheme.colorScheme.onSurface
+                                                        )
+                                                    }
+                                                } else {
+                                                    IconButton(onClick = { navController.navigate("listen_together_from_topbar") }) {
+                                                        Icon(
+                                                            painter = painterResource(R.drawable.group_outlined),
+                                                            contentDescription = stringResource(R.string.together)
+                                                        )
+                                                    }
                                                 }
                                             }
                                              IconButton(onClick = { showSettingDialoge = true }) {

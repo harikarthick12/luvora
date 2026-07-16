@@ -345,7 +345,7 @@ class ListenTogetherClient @Inject constructor(
     
     
     
-    private val codec = MessageCodec(MessageFormat.PROTOBUF, true)
+    private val codec = MessageCodec(MessageFormat.JSON, true)
 
     private var webSocket: WebSocket? = null
     private var pingJob: Job? = null
@@ -436,8 +436,8 @@ class ListenTogetherClient @Inject constructor(
         log(LogLevel.INFO, "Connecting to server", serverUrl)
 
         
-        codec.format = MessageFormat.PROTOBUF
-        codec.compressionEnabled = true
+        codec.format = MessageFormat.JSON
+        codec.compressionEnabled = false
 
         val request = Request.Builder()
             .url(serverUrl)
@@ -1155,7 +1155,11 @@ class ListenTogetherClient @Inject constructor(
             val data = codec.encode(type, payload)
             log(LogLevel.DEBUG, "Sending message", "$type (${codec.format.name})")
             
-            val success = webSocket?.send(okio.ByteString.of(*data)) ?: false
+            val success = if (codec.format == MessageFormat.JSON && !codec.compressionEnabled) {
+                webSocket?.send(String(data)) ?: false
+            } else {
+                webSocket?.send(okio.ByteString.of(*data)) ?: false
+            }
             if (!success) {
                 log(LogLevel.ERROR, "Failed to send message", type)
             }
